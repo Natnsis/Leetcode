@@ -24,18 +24,25 @@ Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
 */
 
 function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
-  const combinedArray = [...new Set([...nums1, ...nums2])]
-  combinedArray.sort((a, b) => a - b);
-  const middleNumber = combinedArray.length / 2;
-  if (middleNumber % 2) {
-    const mid1 = Math.floor(middleNumber);
-    const medianValue = (combinedArray[mid1 - 1] + combinedArray[mid1]) / 2;
-    return medianValue;
-  } else {
+  const combined = [...nums1, ...nums2];
+  const combinedArray = combined.sort((a, b) => a - b);
+  const middleNumber = Math.floor(combinedArray.length / 2);
+
+  console.log(combinedArray);
+
+  if (combinedArray.length === 1) {
+    console.log(combinedArray[0])
+    return combined[1];
+  }
+
+  if (combinedArray.length % 2) {
+    console.log(combinedArray[middleNumber])
     return combinedArray[middleNumber];
+  } else {
+    const medianValue = (combinedArray[middleNumber - 1] + combinedArray[middleNumber]) / 2;
+    console.log(medianValue);
+    return medianValue;
   }
 };
 
-findMedianSortedArrays([3, 5, 3, 7], [3, 7, 4, 3, 2, 7, 1])
-
-
+findMedianSortedArrays([1, 2, 3, 4, 5], [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
