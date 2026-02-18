@@ -32,6 +32,14 @@ Constraints:
   0 <= height[i] <= 104
 */
 
+//width = length between indexes
+
 function maxArea(height: number[]): number {
-  return 12
+  const n = height.length;
+  const sortedVersion = height.sort((a, b) => a - b);
+  const area = sortedVersion[n - 1] * sortedVersion[n - 2];
+  console.log(area);
+  return area
 };
+
+maxArea([1, 1]); 
